@@ -37,7 +37,7 @@ function ConvertHandler() {
       }
     }
 
-    return result;
+    return result % 1 !== 0 ? Number(result.toFixed(5)) : Number(result);
   };
   
   this.getUnit = function(input) {
@@ -46,17 +46,21 @@ function ConvertHandler() {
       throw new Error('invalid unit');
     }
 
-    const rawUnit = rawMatch[2].toLowerCase();
+    let rawUnit = rawMatch[2].toLowerCase();
 
     if (!unitConversion[rawUnit]) {
       throw new Error('invalid unit');
+    }
+
+    if (rawUnit === 'l') {
+      rawUnit = 'L';
     }
 
     return rawUnit;
   };
   
   this.getReturnUnit = function(initUnit) {
-    return unitConversion[initUnit];
+    return unitConversion[initUnit.toLowerCase()];
   };
 
   this.spellOutUnit = function(unit) {
@@ -68,7 +72,7 @@ function ConvertHandler() {
       lbs: 'pounds',
       kg: 'kilograms'
     }
-    return spellOutUnitConversion[unit];
+    return spellOutUnitConversion[unit.toLowerCase()];
   };
   
   this.convert = function(initNum, initUnit) {
@@ -85,9 +89,9 @@ function ConvertHandler() {
       kg: 1 / lbsToKg
     };
 
-    const result = initNum * numConversion[initUnit];
+    const result = initNum * numConversion[initUnit.toLowerCase()];
 
-    return result.toFixed(5);
+    return result % 1 !== 0 ? Number(result.toFixed(5)) : Number(result);
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {

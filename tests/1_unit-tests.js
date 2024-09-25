@@ -26,7 +26,7 @@ suite('Unit Tests', function() {
     });
     test('should correctly read each valid input unit', function() {
       assert.strictEqual(convertHandler.getUnit('32gal'), 'gal');
-      assert.strictEqual(convertHandler.getUnit('32l'), 'l');
+      assert.strictEqual(convertHandler.getUnit('32l'), 'L');
       assert.strictEqual(convertHandler.getUnit('32mi'), 'mi');
       assert.strictEqual(convertHandler.getUnit('32km'), 'km');
       assert.strictEqual(convertHandler.getUnit('32lbs'), 'lbs');
@@ -52,22 +52,22 @@ suite('Unit Tests', function() {
       assert.strictEqual(convertHandler.spellOutUnit('kg'), 'kilograms');
     })
     test('should correctly convert gal to L', function() {
-      assert.strictEqual(convertHandler.convert(1, 'gal'), '3.78541');
+      assert.strictEqual(convertHandler.convert(1, 'gal'), 3.78541);
     });
     test('should correctly convert L to gal', function() {
-      assert.strictEqual(convertHandler.convert(1, 'l'), '0.26417');
+      assert.strictEqual(convertHandler.convert(1, 'l'), 0.26417);
     });
     test('should correctly convert mi to km', function() {
-      assert.strictEqual(convertHandler.convert(1, 'mi'), '1.60934');
+      assert.strictEqual(convertHandler.convert(1, 'mi'), 1.60934);
     });
     test('should correctly convert km to mi', function() {
-      assert.strictEqual(convertHandler.convert(1, 'km'), '0.62137');
+      assert.strictEqual(convertHandler.convert(1, 'km'), 0.62137);
     });
     test('should correctly convert lbs to kg', function() {
-      assert.strictEqual(convertHandler.convert(1, 'lbs'), '0.45359');
+      assert.strictEqual(convertHandler.convert(1, 'lbs'), 0.45359);
     });
     test('should correctly convert kg to lbs', function() {
-      assert.strictEqual(convertHandler.convert(1, 'kg'), '2.20462');
+      assert.strictEqual(convertHandler.convert(1, 'kg'), 2.20462);
     });
   });
 });
